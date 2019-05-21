@@ -9,9 +9,9 @@ import java.util.List;
 
 public abstract class FormModel<T> {
 
-  private final List<BaseField> fields;
-  private final Observable<Object> allFieldObservable;
-  private int mandatory = 0;
+  private final transient List<BaseField> fields;
+  private final transient Observable<Object> allFieldObservable;
+  private transient int mandatory = 0;
 
   public FormModel(List<BaseField> fields) {
     this.fields = fields;
