@@ -21,12 +21,12 @@ public class ListField<T> extends BaseField<List<T>> {
 
   public ListField(@NonNull String fieldId, @Nullable List<T> ogField) {
     super(fieldId, ogField);
-    setField(null);
+    setField(getField());
   }
 
   public ListField(@NonNull String fieldId, @Nullable List<T> ogField, boolean isMandatory) {
     super(fieldId, ogField, isMandatory);
-    setField(null);
+    setField(getField());
   }
 
   @Override
