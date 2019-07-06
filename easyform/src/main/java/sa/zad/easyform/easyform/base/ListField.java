@@ -21,10 +21,18 @@ public class ListField<T> extends BaseField<List<T>> {
 
   public ListField(@NonNull String fieldId, @Nullable List<T> ogField) {
     super(fieldId, ogField);
+    init(ogField);
   }
 
   public ListField(@NonNull String fieldId, @Nullable List<T> ogField, boolean isMandatory) {
     super(fieldId, ogField, isMandatory);
+    init(ogField);
+  }
+
+  private void init(List<T> ogField){
+    if(ObjectUtils.isNull(ogField)){
+      super.setField(new ArrayList<>());
+    }
   }
 
   @Override
