@@ -105,7 +105,7 @@ public abstract class BaseField<T> {
       return false;
     }
     if(field != null){
-      return field.equals(ogField);
+      return ObjectUtils.isSameObject(field, ogField);
     }
     return false;
   }

@@ -178,8 +178,7 @@ public final class ObjectUtils {
   }
 
   public static <T> boolean isSameObject(T object, T object1) {
-    final boolean isSame = object == object1;
-    return isSame;
+    return object == object1;
   }
 
   @Nullable
