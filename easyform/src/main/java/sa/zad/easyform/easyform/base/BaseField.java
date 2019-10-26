@@ -101,7 +101,13 @@ public abstract class BaseField<T> {
   }
 
   public boolean isModified() {
-    return !BaseField.this.equals(ogField);
+    if(ogField == null && field == null){
+      return false;
+    }
+    if(field != null){
+      return field.equals(ogField);
+    }
+    return false;
   }
 
   public boolean isRuntimeValid() {
