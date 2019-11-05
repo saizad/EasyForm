@@ -1,0 +1,10 @@
+
+@squid:S1148Ì"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+{squid:S2637"_This method's return value is marked "android.support.annotation.NonNull" but null is returned.(—°ˆşÿÿÿÿ
+@squid:S1148Ê"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+ %squid:RedundantThrowsDeclarationCheck™"iRemove the declaration of thrown exception 'java.lang.NullPointerException' which is a runtime exception.(ÏŒ÷ùÿÿÿÿ
+›%squid:RedundantThrowsDeclarationCheck£"iRemove the declaration of thrown exception 'java.lang.NullPointerException' which is a runtime exception.(×Ë•
+]squid:S2147Ë"ECombine this catch with the one at line 201, which has the same body.(Å¡ß
+Osquid:S1611F"3Remove the parentheses around the "value" parameter(Ë‰¯úüÿÿÿÿ
+›%squid:RedundantThrowsDeclarationCheck­"iRemove the declaration of thrown exception 'java.lang.NullPointerException' which is a runtime exception.(×Ë•
+Dsquid:S2447R"-Null is returned but a "Boolean" is expected.(¥¹ï

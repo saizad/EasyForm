@@ -101,7 +101,7 @@ public abstract class BaseField<T> {
   }
 
   public boolean isModified() {
-    return !BaseField.this.equals(ogField);
+    return !equals(ogField);
   }
 
   public boolean isRuntimeValid() {
