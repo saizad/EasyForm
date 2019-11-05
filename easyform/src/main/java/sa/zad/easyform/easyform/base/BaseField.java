@@ -101,13 +101,7 @@ public abstract class BaseField<T> {
   }
 
   public boolean isModified() {
-    if(ogField == null && field == null){
-      return false;
-    }
-    if(field != null){
-      return ObjectUtils.isSameObject(field, ogField);
-    }
-    return false;
+    return !equals(ogField);
   }
 
   public boolean isRuntimeValid() {
