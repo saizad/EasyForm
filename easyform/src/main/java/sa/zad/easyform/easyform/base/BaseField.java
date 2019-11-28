@@ -39,11 +39,10 @@ public abstract class BaseField<T> {
   }
 
   public BaseField(@NonNull String fieldId, @Nullable T ogField, boolean isMandatory) {
+    mIsMandatory = isMandatory;
     this.fieldId = fieldId;
     this.ogField = ogField;
     setField(ogField);
-    mIsMandatory = isMandatory;
-    subject.onNext(emptyObject);
   }
 
   public Observable<Object> observable() {
