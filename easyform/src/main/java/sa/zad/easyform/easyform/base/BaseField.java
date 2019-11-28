@@ -24,7 +24,7 @@ public abstract class BaseField<T> {
   private @Nullable
   T field;
   private final static String EMPTY_NETWORK_ERROR_MESSAGE = "--empty---";
-  protected boolean isValidCache = false;
+  public boolean isValidCache = false;
 
   public BaseField(@NonNull String fieldId) {
     this(fieldId, null, false);
