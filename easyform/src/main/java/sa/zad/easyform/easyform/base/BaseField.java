@@ -160,6 +160,9 @@ public abstract class BaseField<T> {
     return __isValid;
   }
 
-  public abstract boolean isValid();
+  public boolean isValid(){
+    return __isValid;
+  }
+
   public abstract void validate() throws Exception;
 }
