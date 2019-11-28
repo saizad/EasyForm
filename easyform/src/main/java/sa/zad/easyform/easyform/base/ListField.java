@@ -50,7 +50,7 @@ public class ListField<T> extends BaseField<List<T>> {
   }
 
   @Override
-  public boolean isValid() {
+  protected boolean isValid() {
     return true;
   }
 

@@ -2,10 +2,11 @@ package sa.zad.easyform.easyform.base;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import io.reactivex.Observable;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Observable;
 
 public abstract class FormModel<T> {
 
@@ -62,7 +63,7 @@ public abstract class FormModel<T> {
 
   public final boolean isAllFieldsValid() {
     for (BaseField field : fields) {
-      if (!field.isValid()) {
+      if (!field.isValidCache) {
         return false;
       }
     }
@@ -71,7 +72,7 @@ public abstract class FormModel<T> {
 
   public final boolean isAllMandatoryFieldsProvided() {
     for (BaseField field : fields) {
-      if (field.isMandatory() && !field.isValid()) {
+      if (field.isMandatory() && !field.isValidCache) {
         return false;
       }
     }
@@ -80,7 +81,7 @@ public abstract class FormModel<T> {
 
   public final boolean isFormValid(){
     for (BaseField field : fields) {
-      if(!field.isValid()){
+      if(!field.isValidCache){
         return false;
       }
     }
@@ -98,7 +99,7 @@ public abstract class FormModel<T> {
   public int getMissingMandatoryCount(){
     int count = 0;
     for (BaseField field : fields) {
-      if (field.isMandatory() && !field.isValid()) {
+      if (field.isMandatory() && !field.isValidCache) {
         count += 1;
       }
     }
@@ -108,7 +109,7 @@ public abstract class FormModel<T> {
   public int getMandatoryCompletedCount(){
     int count = 0;
     for (BaseField field : fields) {
-      if (field.isMandatory() && field.isValid()) {
+      if (field.isMandatory() && field.isValidCache) {
         count += 1;
       }
     }

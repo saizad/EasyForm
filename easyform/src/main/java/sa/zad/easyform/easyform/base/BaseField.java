@@ -24,7 +24,7 @@ public abstract class BaseField<T> {
   private @Nullable
   T field;
   private final static String EMPTY_NETWORK_ERROR_MESSAGE = "--empty---";
-  private boolean __isValid = false;
+  protected boolean isValidCache = false;
 
   public BaseField(@NonNull String fieldId) {
     this(fieldId, null, false);
@@ -55,11 +55,11 @@ public abstract class BaseField<T> {
   }
 
   public Observable<Boolean> validObservable(){
-    return observable().map(o -> __isValid);
+    return observable().map(o -> isValidCache);
   }
 
   public Observable<Pair<String, T>> nonEmptyInvalidObservable() {
-    return setObservable().filter(o -> !__isValid).map(o -> {
+    return setObservable().filter(o -> !isValidCache).map(o -> {
       try {
         validate();
         return new Pair<>("--- some thing is broken :( ---", getField());
@@ -70,7 +70,7 @@ public abstract class BaseField<T> {
   }
 
   public Observable<Pair<String, T>> invalidObservable() {
-    return observable().filter(o -> !__isValid).map(o -> {
+    return observable().filter(o -> !isValidCache).map(o -> {
       try {
         validate();
         return new Pair<>("--- some thing is broken :( ---", getField());
@@ -81,7 +81,7 @@ public abstract class BaseField<T> {
   }
 
   public Observable<T> notEmptyValidObservable() {
-    return setObservable().filter(o -> __isValid).map(o -> field);
+    return setObservable().filter(o -> isValidCache).map(o -> field);
   }
 
   public Observable<Object> fieldUnsetObservable() {
@@ -89,11 +89,11 @@ public abstract class BaseField<T> {
   }
 
   public Observable<Pair<Boolean, String>> runTimeErrorState() {
-    return observable().map(o -> new Pair<>(__isValid || isRuntimeValid(), getFieldId()));
+    return observable().map(o -> new Pair<>(isValidCache || isRuntimeValid(), getFieldId()));
   }
 
   public Observable<Pair<Boolean, String>> errorState() {
-    return observable().map(o -> new Pair<>(__isValid, getFieldId()));
+    return observable().map(o -> new Pair<>(isValidCache, getFieldId()));
   }
 
   public Observable<Boolean> modified() {
@@ -120,7 +120,7 @@ public abstract class BaseField<T> {
   @CallSuper
   public void setField(@Nullable T value) {
     field = value;
-    __isValid = __isValid();
+    isValidCache = __isValid();
     publish();
   }
 
@@ -153,16 +153,14 @@ public abstract class BaseField<T> {
 
   private boolean __isValid(){
     if(!mIsMandatory){
-      __isValid = ObjectUtils.isNull(field) || isValid();
-      return __isValid;
+      isValidCache = ObjectUtils.isNull(field) || isValid();
+      return isValidCache;
     }
-    __isValid = isValid();
-    return __isValid;
+    isValidCache = isValid();
+    return isValidCache;
   }
 
-  public boolean isValid(){
-    return __isValid;
-  }
+  abstract protected boolean isValid();
 
   public abstract void validate() throws Exception;
 }
