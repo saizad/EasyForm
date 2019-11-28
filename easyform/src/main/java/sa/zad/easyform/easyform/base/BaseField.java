@@ -120,7 +120,6 @@ public abstract class BaseField<T> {
   @CallSuper
   public void setField(@Nullable T value) {
     field = value;
-    isValidCache = __isValid();
     publish();
   }
 
@@ -130,6 +129,7 @@ public abstract class BaseField<T> {
   }
 
   public void publish() {
+    isValidCache = __isValid();
     subject.onNext(emptyObject);
     networkErrorSubject.onNext(EMPTY_NETWORK_ERROR_MESSAGE);
   }
