@@ -25,7 +25,6 @@ public abstract class NonEmptyString extends StringBaseField {
 
   @Override
   public void setField(@Nullable String value) {
-    //Todo Fix later, with better logic
     if (StringUtils.isNullOrEmpty(value)) {
       super.setField(null);
     } else {
